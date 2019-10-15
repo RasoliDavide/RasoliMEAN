@@ -14,7 +14,7 @@ export class AppComponent {
 
     ngOnInit(): void {
       // Make the HTTP request:
-      this.http.get('https://3000-a6f98be7-8320-4aed-8c2a-bd167d3aebec.ws-eu0.gitpod.io/api').subscribe(data => {
+      this.http.get('http://localhost:3000/api').subscribe(data => {
         // Read the result field from the JSON response.
         this.results = data['results'];
       });
