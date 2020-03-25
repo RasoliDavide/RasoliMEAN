@@ -1,0 +1,8 @@
+<h1>Il super negozio di super prodotti</h1>
+<button (click)="creaRichiesta()">Visualizza lista prodotti</button>
+<div *ngFor="let prodotto of prodotti">
+  <h2>{{prodotto.product_name}}</h2>
+  <p>Fornitore: {{prodotto.supplier}}</p>
+  <p>Quantità: {{prodotto.quantity}}</p>
+  <p>Costo unitario: {{prodotto.unit_cost}}</p>
+</div>
