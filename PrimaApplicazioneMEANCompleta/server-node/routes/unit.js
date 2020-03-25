@@ -97,8 +97,8 @@ router.post('/add', function(req,res, next)
     res.status(500).json({success: false, message:'Error while connecting database', error:err});
     return;
   }
-  let sqlInsert = `INSERT INTO dbo.[cr-unit-attributes] (Unit,Cost,Speed, Hit_Speed, Deploy_Time, Range) 
-                     VALUES ('${unit.Unit}','${unit.Cost}',' ${unit.Speed}','${unit.Hit_Speed}','${unit.Deploy_time}',' ${unit.Range}')`;
+  let sqlInsert = `INSERT INTO dbo.[cr-unit-attributes] (Unit,Cost,Speed, Hit_Speed, Deploy_Time, Range, Target, Count, Transport, Type, Rarity) 
+                     VALUES ('${unit.Unit}','${unit.Cost}',' ${unit.Speed}','${unit.Hit_Speed}','${unit.Deploy_time}',' ${unit.Range}',' ${unit.Target}',' ${unit.Count}',' ${unit.Transport}',' ${unit.Type}',' ${unit.Rarity}')`;
   executeQueryAdd(res, sqlInsert, next);
 })
 module.exports = router;
