@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.nav {
+  color: #00B7FF;
+  padding: 2px 5px 2px 5px;
+}
+.barra
+{
+  display: inline-block;
+  border: 2px solid black;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
