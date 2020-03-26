@@ -45,8 +45,9 @@ router.get('/all', function(req, res)
 
 router.get('/search', function(req, res)
 {
+
     let query = `SELECT * FROM [cr-unit-attributes] WHERE Unit = '${req.query.unit}'`;//SQLInjection, pazienza.
-    console.log(query);
+    //console.log(query);
     executeQuery(res, query);
 })
 

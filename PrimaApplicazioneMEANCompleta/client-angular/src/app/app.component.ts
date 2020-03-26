@@ -28,5 +28,10 @@ export class AppComponent {
   selectUnit(clicked : String)
   {
     console.log(clicked);
+    let url = 'http://localhost:3000/api/search?unit=' + clicked;
+    console.log(url);
+
+    this.observerSin = this.http.get<Unit>(url);
+    this.observerSin.subscribe((data) => {this.selectedUnit = data[0]; console.log(this.selectedUnit);});
   }
 }
