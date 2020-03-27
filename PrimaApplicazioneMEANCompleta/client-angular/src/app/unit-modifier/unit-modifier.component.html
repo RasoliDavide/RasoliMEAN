@@ -1,0 +1,18 @@
+<h1>
+    Modifica l'unità {{selectedUnit.Unit}}
+</h1>
+<form class="form-group" [formGroup]="modifyUnitForm" (submit)="putModify()">
+    <div> <label for="Unit">Unit:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Unit']" type="text" name="Unit"></div>
+    <div> <label for="Cost">Cost:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Cost']" type="text" name="Cost"></div>
+    <div> <label for="Speed">Speed:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Hit_Speed']" type="text" name="Speed"></div>
+    <div> <label for="Hit_Speed">Hit speed:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Speed']" type="text" name="Hit_Speed"></div>
+    <div> <label for="Deploy_time">Deploy time:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Deploy_Time']" type="text" name="Deploy_time"></div>
+    <div> <label for="Range">Range:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Range']" type="text" name="Range"></div>
+    <div> <label for="Target">Target:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Target']" type="text" name="Target"></div>
+    <div> <label for="Count">Count:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Count']" type="text" name="Count"></div>
+    <div> <label for="Transport">Transport:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Transport']" type="text" name="Transport"></div>
+    <div> <label for="Type">Type:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Type']" type="text" name="Type"></div>
+    <div> <label for="Rarity">Rarity:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Rarity']" type="text" name="Rarity"></div>
+    <button type="submit">Invia</button>
+</form>
+<button (click)="deleteUnit()">Elimina</button>

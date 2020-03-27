@@ -12,10 +12,9 @@ export class AppComponent {
   http : HttpClient;
   observerAll : Observable<Unit[]>;
   observerSin : Observable<Unit>;
-  observerPos : Observable<String>; 
   unitList : Unit[] = new Array<Unit>();
   selectedUnit : Unit;
-
+  visuaAddForm : boolean = false;
   constructor(http : HttpClient)
   {
     this.http = http;
@@ -27,11 +26,12 @@ export class AppComponent {
   }
   selectUnit(clicked : String)
   {
-    console.log(clicked);
     let url = 'http://localhost:3000/api/search?unit=' + clicked;
-    console.log(url);
-
     this.observerSin = this.http.get<Unit>(url);
-    this.observerSin.subscribe((data) => {this.selectedUnit = data[0]; console.log(this.selectedUnit);});
+    this.observerSin.subscribe((data) => {this.selectedUnit = data[0]; });
+  }
+  toggleAddForm() : void
+  {
+    this.visuaAddForm = !this.visuaAddForm;
   }
 }

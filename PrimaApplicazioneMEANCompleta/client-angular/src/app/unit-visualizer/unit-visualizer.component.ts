@@ -8,9 +8,14 @@ import { Unit } from '../unit.model';
 export class UnitVisualizerComponent implements OnInit {
 
   @Input() selectedUnit : Unit;
+  visuaModifier : boolean = false;
   constructor() {}
 
   ngOnInit(): void {
   }
-
+  toggleModifier()
+  {
+    this.visuaModifier = !this.visuaModifier;
+    console.log(this.visuaModifier)
+  }
 }

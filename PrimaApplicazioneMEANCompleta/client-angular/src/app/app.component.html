@@ -1,5 +1,11 @@
 <app-unit-visualizer [selectedUnit]="selectedUnit" *ngIf="selectedUnit"></app-unit-visualizer>
-<div *ngFor="let unit of unitList">
+<div>
+    <button (click)="toggleAddForm()">
+        Visualizza/Nascondi form di aggiunta
+    </button>
+    <app-add *ngIf="visuaAddForm"></app-add>
+</div>
+<div *ngFor=" let unit of unitList ">
     <h3>{{unit.Unit}}</h3>
-    <button (click)="selectUnit(unit.Unit)">{{unit.Unit}}</button>
+    <button (click)="selectUnit(unit.Unit) ">{{unit.Unit}}</button>
 </div>
