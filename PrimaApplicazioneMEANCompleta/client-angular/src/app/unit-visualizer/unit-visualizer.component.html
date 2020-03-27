@@ -1,15 +1,15 @@
-<h1>
-    {{selectedUnit.Unit}}</h1>
-<p>Costo: {{selectedUnit.Cost}}</p>
-<p>Velocità d'attacco: {{selectedUnit.Hit_Speed}}</p>
-<p>Velocità di movimento: {{selectedUnit.Speed}}</p>
-<p>Tempo di schieramento: {{selectedUnit.Deploy_Time}}</p>
-<p>Raggio: {{selectedUnit.Range}}</p>
-<p>Obiettivo: {{selectedUnit.Target}}</p>
-<p>Numero: {{selectedUnit.Count}}</p>
-<p>Trasport: {{selectedUnit.Transport}}</p>
-<p>Tipo: {{selectedUnit.Type}}</p>
-<p>Rarità: {{selectedUnit.Rarity}}</p>
-<img src='http://localhost:3000/images/{{selectedUnit.Unit}}.png' style="width: 277px; height:330px ">
-<button (click)="toggleModifier()">Modifica</button>
+<h1 class="txt-center">{{selectedUnit.Unit}}</h1>
+<p class="txt-center">Costo: {{selectedUnit.Cost}}</p>
+<p class="txt-center">Velocità d'attacco: {{selectedUnit.Hit_Speed}}</p>
+<p class="txt-center">Velocità di movimento: {{selectedUnit.Speed}}</p>
+<p class="txt-center">Tempo di schieramento: {{selectedUnit.Deploy_Time}}</p>
+<p class="txt-center">Raggio: {{selectedUnit.Range}}</p>
+<p class="txt-center">Obiettivo: {{selectedUnit.Target}}</p>
+<p class="txt-center">Numero: {{selectedUnit.Count}}</p>
+<p class="txt-center">Trasport: {{selectedUnit.Transport}}</p>
+<p class="txt-center">Tipo: {{selectedUnit.Type}}</p>
+<p class="txt-center">Rarità: {{selectedUnit.Rarity}}</p>
+<img class="ele-center" src='http://localhost:3000/images/{{selectedUnit.Unit}}.png' style="width: 277px; height:330px ">
+<br>
+<button class="btn btn-info btn-mod ele-center" (click)="toggleModifier()">Modifica</button>
 <app-unit-modifier [selectedUnit]="selectedUnit" *ngIf="visuaModifier"></app-unit-modifier>

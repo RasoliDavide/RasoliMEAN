@@ -2,16 +2,16 @@
     Aggiungi una nuova unità
 </h1>
 <form class="form-group" [formGroup]="addUnitForm" (submit)="postAdd()">
-    <div> <label for="Unit">Unit:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Unit']" type="text" placeholder="Unit name" name="Unit"></div>
-    <div> <label for="Cost">Cost:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Cost']" type="text" placeholder="xy" name="Cost"></div>
-    <div> <label for="Speed">Speed:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Hit_Speed']" type="text" placeholder="xy" name="Speed"></div>
-    <div> <label for="Hit_Speed">Hit speed:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Speed']" type="text" placeholder="xy" name="Hit_Speed"></div>
-    <div> <label for="Deploy_time">Deploy time:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Deploy_Time']" type="text" placeholder="xy" name="Deploy_time"></div>
-    <div> <label for="Range">Range:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Range']" type="text" placeholder="xy" name="Range"></div>
-    <div> <label for="Target">Target:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Target']" type="text" placeholder="xy" name="Target"></div>
-    <div> <label for="Count">Count:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Count']" type="text" placeholder="xy" name="Count"></div>
-    <div> <label for="Transport">Transport:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Transport']" type="text" placeholder="xy" name="Transport"></div>
-    <div> <label for="Type">Type:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Type']" type="text" placeholder="xy" name="Type"></div>
-    <div> <label for="Rarity">Rarity:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Rarity']" type="text" placeholder="xy" name="Rarity"></div>
-    <button type="submit">Invia</button>
+    <div> <label for="Unit">Unit:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Unit']" type="text" name="Unit"></div>
+    <div> <label for="Cost">Cost:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Cost']" type="text" name="Cost"></div>
+    <div> <label for="Speed">Speed:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Hit_Speed']" type="text" name="Speed"></div>
+    <div> <label for="Hit_Speed">Hit speed:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Speed']" type="text" name="Hit_Speed"></div>
+    <div> <label for="Deploy_time">Deploy time:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Deploy_Time']" type="text" name="Deploy_time"></div>
+    <div> <label for="Range">Range:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Range']" type="text" name="Range"></div>
+    <div> <label for="Target">Target:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Target']" type="text" name="Target"></div>
+    <div> <label for="Count">Count:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Count']" type="text" name="Count"></div>
+    <div> <label for="Transport">Transport:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Transport']" type="text" name="Transport"></div>
+    <div> <label for="Type">Type:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Type']" type="text" name="Type"></div>
+    <div> <label for="Rarity">Rarity:</label><br><input class="form-control" [formControl]="addUnitForm.controls['Rarity']" type="text" name="Rarity"></div>
+    <button class="btn btn-info" type="submit">Invia</button>
 </form>

@@ -13,6 +13,6 @@
     <div> <label for="Transport">Transport:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Transport']" type="text" name="Transport"></div>
     <div> <label for="Type">Type:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Type']" type="text" name="Type"></div>
     <div> <label for="Rarity">Rarity:</label><br><input class="form-control" [formControl]="modifyUnitForm.controls['Rarity']" type="text" name="Rarity"></div>
-    <button type="submit">Invia</button>
+    <button class="btn btn-info" type="submit">Invia</button>
 </form>
-<button (click)="deleteUnit()">Elimina</button>
+<button style="float:right;" class="btn btn-danger" (click)="deleteUnit()">Elimina</button>
