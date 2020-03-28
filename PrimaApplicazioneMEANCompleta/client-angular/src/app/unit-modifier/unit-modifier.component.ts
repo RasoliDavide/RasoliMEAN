@@ -44,18 +44,19 @@ export class UnitModifierComponent implements OnInit {
   {
     if(this.modifyUnitForm.valid)
     {
-      let updatedUnit = new Unit();
-      updatedUnit.Unit = this.selectedUnit.Unit;
-      updatedUnit.Cost = this.modifyUnitForm.controls['Cost'].value;
-      updatedUnit.Hit_Speed = this.modifyUnitForm.controls['Hit_Speed'].value;
-      updatedUnit.Speed = this.modifyUnitForm.controls['Speed'].value;
-      updatedUnit.Deploy_Time = this.modifyUnitForm.controls['Range'].value;
-      updatedUnit.Range = this.modifyUnitForm.controls['Hit_Speed'].value;
-      updatedUnit.Target = this.modifyUnitForm.controls['Target'].value;
-      updatedUnit.Count = this.modifyUnitForm.controls['Count'].value;
-      updatedUnit.Transport = this.modifyUnitForm.controls['Transport'].value;
-      updatedUnit.Type = this.modifyUnitForm.controls['Type'].value;
-      updatedUnit.Rarity = this.modifyUnitForm.controls['Rarity'].value;
+      let updatedUnit = new Unit(
+        this.modifyUnitForm.controls['Unit'].value,
+        this.modifyUnitForm.controls['Cost'].value,
+        this.modifyUnitForm.controls['Hit_Speed'].value,
+        this.modifyUnitForm.controls['Speed'].value,
+        this.modifyUnitForm.controls['Range'].value,
+        this.modifyUnitForm.controls['Hit_Speed'].value,
+        this.modifyUnitForm.controls['Target'].value,
+        this.modifyUnitForm.controls['Count'].value,
+        this.modifyUnitForm.controls['Transport'].value,
+        this.modifyUnitForm.controls['Type'].value,
+        this.modifyUnitForm.controls['Rarity'].value
+    );
       let httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
       this.observerPut = this.http.put('http://localhost:3000/api/modify', JSON.stringify(updatedUnit), {headers : httpHeader});
       this.modifiedUnit.emit(updatedUnit);

@@ -40,18 +40,19 @@ export class AddComponent implements OnInit {
   {
     if(this.addUnitForm.valid)
     {
-      let newUnit = new Unit();
-      newUnit.Unit = this.addUnitForm.controls['Unit'].value;
-      newUnit.Cost = this.addUnitForm.controls['Cost'].value;
-      newUnit.Hit_Speed = this.addUnitForm.controls['Hit_Speed'].value;
-      newUnit.Speed = this.addUnitForm.controls['Speed'].value;
-      newUnit.Deploy_Time = this.addUnitForm.controls['Range'].value;
-      newUnit.Range = this.addUnitForm.controls['Hit_Speed'].value;
-      newUnit.Target = this.addUnitForm.controls['Target'].value;
-      newUnit.Count = this.addUnitForm.controls['Count'].value;
-      newUnit.Transport = this.addUnitForm.controls['Transport'].value;
-      newUnit.Type = this.addUnitForm.controls['Type'].value;
-      newUnit.Rarity = this.addUnitForm.controls['Rarity'].value;
+      let newUnit = new Unit(
+          this.addUnitForm.controls['Unit'].value,
+          this.addUnitForm.controls['Cost'].value,
+          this.addUnitForm.controls['Hit_Speed'].value,
+          this.addUnitForm.controls['Speed'].value,
+          this.addUnitForm.controls['Range'].value,
+          this.addUnitForm.controls['Hit_Speed'].value,
+          this.addUnitForm.controls['Target'].value,
+          this.addUnitForm.controls['Count'].value,
+          this.addUnitForm.controls['Transport'].value,
+          this.addUnitForm.controls['Type'].value,
+          this.addUnitForm.controls['Rarity'].value
+      );
       let httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
       this.observerPos = this.http.post('http://localhost:3000/api/add', JSON.stringify(newUnit), {headers : httpHeader});
       this.added.emit(newUnit);
