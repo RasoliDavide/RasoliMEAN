@@ -30,7 +30,7 @@ let executeQueryAll = function(res, next, pageName) {
         });
     });
 }
-let executeQuerySingle = function(res, ind, next, pageName) {
+let executeQuerySingle = function(res, unit, next, pageName) {
     sql.connect(config, function(err) {
         if (err) { //Display error page
             console.log("Error while connecting database :- " + err);
@@ -38,7 +38,7 @@ let executeQuerySingle = function(res, ind, next, pageName) {
             return "err";
         }
         var request = new sql.Request(); // create Request object
-        request.query("select * from [dbo].[cr-unit-attributes]", function(err, result) { //Display error page
+        request.query(`select * from [dbo].[cr-unit-attributes] where Unit = '${unit}'`, function(err, result) { //Display error page
             if (err) {
                 console.log("Error while querying database :- " + err);
                 res.status(500).json({ success: false, message: 'Error while querying database', error: err });
@@ -46,15 +46,11 @@ let executeQuerySingle = function(res, ind, next, pageName) {
                 return "err";
             }
             //sql.close();
-            console.log(result.recordset.length, ind)
-            if (ind == -1)
-                render(pageName, result.recordset[result.recordset.length - 1], res) //Il vettore con i dati è nel campo recordset (puoi loggare result per verificare)
-            else
-                render(pageName, result.recordset[ind], res)
+            render(pageName, result.recordset[0], res)
         });
     });
 }
-let executeQueryAdd = function(res, query, next) {
+let executeQueryAdd = function(res, query, unit, next) {
     sql.connect(config, function(err) {
         if (err) { //Display error page
             console.log("Error while connecting database :- " + err);
@@ -70,7 +66,7 @@ let executeQueryAdd = function(res, query, next) {
                 return;
             }
             sql.close();
-            executeQuerySingle(res, -1, next, "single_unit")
+            executeQuerySingle(res, unit, next, "single_unit")
         });
     });
 }
@@ -82,7 +78,7 @@ router.get('/all', function(req, res, next) {
     executeQueryAll(res, next, "all_units");
 });
 router.get('/search', function(req, res, next) {
-    executeQuerySingle(res, req.query.id, next, "single_unit")
+    executeQuerySingle(res, req.query.unit, next, "single_unit")
 })
 router.get('/add', function(req, res, next) {
     res.render("add")
@@ -95,6 +91,6 @@ router.post('/add', function(req, res, next) {
     }
     let sqlInsert = `INSERT INTO dbo.[cr-unit-attributes] (Unit,Cost,Speed, Hit_Speed, Deploy_Time, Range, Target, Count, Transport, Type, Rarity) 
                      VALUES ('${unit.Unit}','${unit.Cost}',' ${unit.Speed}','${unit.Hit_Speed}','${unit.Deploy_time}',' ${unit.Range}',' ${unit.Target}',' ${unit.Count}',' ${unit.Transport}',' ${unit.Type}',' ${unit.Rarity}')`;
-    executeQueryAdd(res, sqlInsert, next);
+    executeQueryAdd(res, sqlInsert, unit.Unit, next);
 })
 module.exports = router;
