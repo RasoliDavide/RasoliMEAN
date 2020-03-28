@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Unit } from '../unit.model';
 @Component({
   selector: 'app-unit-visualizer',
@@ -8,12 +8,26 @@ import { Unit } from '../unit.model';
 export class UnitVisualizerComponent implements OnInit {
 
   @Input() selectedUnit : Unit;
+  @Output() modifiedToForward = new EventEmitter<Unit>();
+  @Output() deletedToForward = new EventEmitter<String>();
+
   visuaModifier : boolean = false;
   constructor() {}
 
   ngOnInit(): void {
   }
-  toggleModifier()
+  forwardModifiedUnit(modified : Unit) : void
+  {
+    this.selectedUnit = modified;
+    this.toggleModifier();
+    this.modifiedToForward.emit(modified);
+  }
+  forwardDeletedUnit(toDelete : String) : void
+  {
+    this.toggleModifier();
+    this.deletedToForward.emit(toDelete);
+  }
+  toggleModifier() : void
   {
     this.visuaModifier = !this.visuaModifier;
     console.log(this.visuaModifier)

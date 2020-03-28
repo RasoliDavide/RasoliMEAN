@@ -9,9 +9,8 @@
             <button class="btn btn-info" (click)="selectUnit(unit.Unit) ">Visualizza più informazioni</button>
         </div>
     </div>
-
     <div class="col-sm-6 sticky">
-        <app-add></app-add>
-        <app-unit-visualizer [selectedUnit]="selectedUnit" *ngIf="selectedUnit"></app-unit-visualizer>
+        <app-add (added)="addToArray($event)"></app-add>
+        <app-unit-visualizer (deletedToForward)="deleteUnitInArray($event)" (modifiedToForward)="modifyUnitInArray($event)" [selectedUnit]="selectedUnit" *ngIf="selectedUnit"></app-unit-visualizer>
     </div>
 </div>

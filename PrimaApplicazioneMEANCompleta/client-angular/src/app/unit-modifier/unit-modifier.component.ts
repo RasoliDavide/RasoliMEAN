@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Unit } from '../unit.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -10,6 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UnitModifierComponent implements OnInit {
   @Input() selectedUnit : Unit;
+  @Output() modifiedUnit = new EventEmitter<Unit>();
+  @Output() deletedUnit = new EventEmitter<String>();
+
   observerPut : Observable<Object>;
   observerDelete : Observable<Object>;
   http : HttpClient;
@@ -37,7 +40,7 @@ export class UnitModifierComponent implements OnInit {
     )
     this.modifyUnitForm.controls['Unit'].disable();
   }
-  putModify()
+  putModify() : void
   {
     if(this.modifyUnitForm.valid)
     {
@@ -55,12 +58,14 @@ export class UnitModifierComponent implements OnInit {
       updatedUnit.Rarity = this.modifyUnitForm.controls['Rarity'].value;
       let httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
       this.observerPut = this.http.put('http://localhost:3000/api/modify', JSON.stringify(updatedUnit), {headers : httpHeader});
+      this.modifiedUnit.emit(updatedUnit);
       this.observerPut.subscribe((data) => {console.log(data)});
     }
   }
-  deleteUnit()
+  deleteUnit() : void
   {
     this.observerDelete = this.http.delete(`http://localhost:3000/api/delete/${this.selectedUnit.Unit}`);
+    this.deletedUnit.emit(this.selectedUnit.Unit);
     this.observerDelete.subscribe((data) => {console.log(data)});
   }
 }

@@ -9,7 +9,7 @@
 <p class="txt-center">Trasport: {{selectedUnit.Transport}}</p>
 <p class="txt-center">Tipo: {{selectedUnit.Type}}</p>
 <p class="txt-center">Rarità: {{selectedUnit.Rarity}}</p>
-<img class="ele-center" src='http://localhost:3000/images/{{selectedUnit.Unit}}.png' style="width: 277px; height:330px ">
+<img class="ele-center" src='http://localhost:3000/images/{{selectedUnit.Unit}}.png' alt="Immagine non disponibile" style="width: 277px; height:330px ">
 <br>
 <button class="btn btn-info btn-mod ele-center" (click)="toggleModifier()">Modifica</button>
-<app-unit-modifier [selectedUnit]="selectedUnit" *ngIf="visuaModifier"></app-unit-modifier>
+<app-unit-modifier (deletedUnit)="forwardDeletedUnit($event)" (modifiedUnit)="forwardModifiedUnit($event)" [selectedUnit]="selectedUnit" *ngIf="visuaModifier"></app-unit-modifier>

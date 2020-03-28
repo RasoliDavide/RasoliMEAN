@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,6 +14,7 @@ export class AddComponent implements OnInit {
   addUnitForm : FormGroup;
   http : HttpClient;
   observerPos : Observable<Object>; 
+  @Output() added = new EventEmitter<Unit>();
   constructor(fb : FormBuilder, http : HttpClient) { 
     this.addUnitForm = fb.group(
       {
@@ -53,7 +54,9 @@ export class AddComponent implements OnInit {
       newUnit.Rarity = this.addUnitForm.controls['Rarity'].value;
       let httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
       this.observerPos = this.http.post('http://localhost:3000/api/add', JSON.stringify(newUnit), {headers : httpHeader});
+      this.added.emit(newUnit);
       this.observerPos.subscribe((data) => {console.log(data)});
+      this.addUnitForm.reset();
     }
   }
 }
